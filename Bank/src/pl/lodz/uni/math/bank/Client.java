@@ -1,31 +1,67 @@
 package pl.lodz.uni.math.bank;
 
 import java.util.List;
+import java.util.ArrayList;
 
-public class Client{
-	String firstName;
-	String lastName;
-	//Address address;
-	//String phoneNumber;
-	Account account=null;
-	static Account [] accountList;
+public class Client {
+	private String firstName;
+	private String lastName;
+	private Address address=null;
+	String phoneNumber;
+	//Account account = null;
+	private List<Account> accountList = new ArrayList<Account>();
+
 	public Account getAccountByNumber(int i) {
-		//if(accountList[i]!=null)
-			return accountList[i];
-		
+		// if(accountList[i]!=null)
+		return accountList.get(i);
 	}
-	public void addAccount(int number, float funds, String description)
-	{
-		if(accountList[number]==null)
-		{
-			System.out.println("takie konto juz istnieje");
-		}
-		else
-		{
-			accountList[number].funds=funds;
-			accountList[number].description=description;
-		}
+
+	public Client(String firstName, String lastName, String phoneNumber) {
+		 this.setFirstName(firstName);
+		 this.setLastName(lastName);
+		 this.phoneNumber=phoneNumber;
 	}
 	
+
+	public void addAccount(Account account) {
+			accountList.add(account);
+		}
 	
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+	
+	public void printAccountList(){
+		for(int i=0;i<accountList.size();i++)
+			System.out.println("Account number: "+accountList.get(i).getNumber()+"\t Description: "+accountList.get(i).getDescription());
+
+	}
+
 }

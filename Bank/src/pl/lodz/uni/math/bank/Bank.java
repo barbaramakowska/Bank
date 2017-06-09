@@ -1,51 +1,44 @@
 package pl.lodz.uni.math.bank;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Bank {
+	private String name;
+	private Address address;
+	private static List<Client> clientList = new ArrayList<Client>();
 	private static Bank instance = null;
-	//static Client[] clientList;
+
 	public static Bank getInstance() {
-        if (instance == null) {
-            synchronized (Bank.class) {
-                if (instance == null) {
-                    instance = new Bank();
-                }
-            }
-        }
-        return instance;
-    }
-	private Bank() {
-		System.out.println("konstr");
-    }
+		if (instance == null) {
+			instance = new Bank();
+		}
+		return instance;
+	}
 
+	public Address getAddress() {
+		return address;
+	}
 
+	public void setAddress(Address address) {
+		this.address = address;
+	}
 
-	String name;
-	Address address;
-	static List<Client> clientList;
+	public String getName() {
+		return name;
+	}
 
-	public static Client getClientByID(int i) {
-		// if (clientList[i]!=null)
+	public void setName(String name) {
+
+		this.name = name;
+	}
+
+	public Client getClientByID(int i) {
 		return clientList.get(i);
 	}
 
-
-
-
-
-
-	public static void addClient(String firstName, String lastName) {
-		Client newClient = new Client();
-		
-
-		newClient.firstName = firstName;
-	newClient.lastName = lastName;
-		clientList.add(newClient);
-
-
-		System.out.println("wusweknvkjf kvhfkdb fbkdf");
-
+	public void addClient(Client client) {
+		clientList.add(client);
 	}
-	
+
 }
